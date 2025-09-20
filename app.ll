@@ -6,7 +6,7 @@ target triple = "x86_64-pc-linux-gnu"
 @colour = dso_local local_unnamed_addr global i32 0, align 4
 @grad = dso_local local_unnamed_addr global i32 0, align 4
 
-; Function Attrs: mustprogress nofree norecurse nosync nounwind sspstrong willreturn memory(read, argmem: none, inaccessiblemem: none) uwtable
+; Function Attrs: mustprogress nofree norecurse nosync nounwind optsize sspstrong willreturn memory(read, argmem: none, inaccessiblemem: none) uwtable
 define dso_local range(i32 -16776961, -65535) i32 @main_colour() local_unnamed_addr #0 {
   %1 = load i32, ptr @colour, align 4, !tbaa !5
   %2 = srem i32 %1, 3
@@ -17,13 +17,13 @@ define dso_local range(i32 -16776961, -65535) i32 @main_colour() local_unnamed_a
   ret i32 %6
 }
 
-; Function Attrs: mustprogress nofree norecurse nosync nounwind sspstrong willreturn memory(none) uwtable
+; Function Attrs: mustprogress nofree norecurse nosync nounwind optsize sspstrong willreturn memory(none) uwtable
 define dso_local range(i32 0, -2147483648) i32 @get_abs(i32 noundef %0) local_unnamed_addr #1 {
   %2 = tail call i32 @llvm.abs.i32(i32 %0, i1 true)
   ret i32 %2
 }
 
-; Function Attrs: nounwind sspstrong uwtable
+; Function Attrs: nounwind optsize sspstrong uwtable
 define dso_local void @draw_line(i32 noundef %0, i32 noundef %1, i32 noundef %2, i32 noundef %3) local_unnamed_addr #2 {
   %5 = sub nsw i32 255, %1
   %6 = sub nsw i32 255, %3
@@ -92,23 +92,24 @@ define dso_local void @draw_line(i32 noundef %0, i32 noundef %1, i32 noundef %2,
   ret void
 }
 
+; Function Attrs: optsize
 declare void @simPutPixel(i32 noundef, i32 noundef, i32 noundef) local_unnamed_addr #3
 
-; Function Attrs: mustprogress nofree norecurse nosync nounwind sspstrong willreturn memory(none) uwtable
+; Function Attrs: mustprogress nofree norecurse nosync nounwind optsize sspstrong willreturn memory(none) uwtable
 define dso_local noundef i32 @turn_x(i32 noundef %0, i32 noundef %1, i32 noundef %2, i32 noundef %3) local_unnamed_addr #1 {
   %5 = add i32 %1, %0
   %6 = sub i32 %5, %3
   ret i32 %6
 }
 
-; Function Attrs: mustprogress nofree norecurse nosync nounwind sspstrong willreturn memory(none) uwtable
+; Function Attrs: mustprogress nofree norecurse nosync nounwind optsize sspstrong willreturn memory(none) uwtable
 define dso_local noundef i32 @turn_y(i32 noundef %0, i32 noundef %1, i32 noundef %2, i32 noundef %3) local_unnamed_addr #1 {
   %5 = sub i32 %1, %0
   %6 = add i32 %5, %2
   ret i32 %6
 }
 
-; Function Attrs: nounwind sspstrong uwtable
+; Function Attrs: nounwind optsize sspstrong uwtable
 define dso_local void @draw_pythagoras_tree(i32 noundef %0, i32 noundef %1, i32 noundef %2, i32 noundef %3, i32 noundef %4) local_unnamed_addr #2 {
   %6 = icmp eq i32 %4, 0
   br i1 %6, label %36, label %7
@@ -127,10 +128,10 @@ define dso_local void @draw_pythagoras_tree(i32 noundef %0, i32 noundef %1, i32 
   %18 = add i32 %17, %14
   %19 = sub i32 %16, %14
   %20 = add i32 %19, %12
-  tail call void @draw_line(i32 noundef %12, i32 noundef %11, i32 noundef %10, i32 noundef %9)
-  tail call void @draw_line(i32 noundef %12, i32 noundef %11, i32 noundef %14, i32 noundef %16)
-  tail call void @draw_line(i32 noundef %18, i32 noundef %20, i32 noundef %10, i32 noundef %9)
-  tail call void @draw_line(i32 noundef %14, i32 noundef %16, i32 noundef %18, i32 noundef %20)
+  tail call void @draw_line(i32 noundef %12, i32 noundef %11, i32 noundef %10, i32 noundef %9) #7
+  tail call void @draw_line(i32 noundef %12, i32 noundef %11, i32 noundef %14, i32 noundef %16) #7
+  tail call void @draw_line(i32 noundef %18, i32 noundef %20, i32 noundef %10, i32 noundef %9) #7
+  tail call void @draw_line(i32 noundef %14, i32 noundef %16, i32 noundef %18, i32 noundef %20) #7
   %21 = mul nsw i32 %18, 3
   %22 = add nsw i32 %21, %14
   %23 = sub nsw i32 %20, %16
@@ -144,10 +145,10 @@ define dso_local void @draw_pythagoras_tree(i32 noundef %0, i32 noundef %1, i32 
   %31 = sdiv i32 %30, 4
   %32 = add nsw i32 %29, %31
   %33 = sdiv i32 %32, 4
-  tail call void @draw_line(i32 noundef %14, i32 noundef %16, i32 noundef %27, i32 noundef %33)
-  tail call void @draw_line(i32 noundef %18, i32 noundef %20, i32 noundef %27, i32 noundef %33)
+  tail call void @draw_line(i32 noundef %14, i32 noundef %16, i32 noundef %27, i32 noundef %33) #7
+  tail call void @draw_line(i32 noundef %18, i32 noundef %20, i32 noundef %27, i32 noundef %33) #7
   %34 = add nsw i32 %8, -1
-  tail call void @draw_pythagoras_tree(i32 noundef %14, i32 noundef %16, i32 noundef %27, i32 noundef %33, i32 noundef %34)
+  tail call void @draw_pythagoras_tree(i32 noundef %14, i32 noundef %16, i32 noundef %27, i32 noundef %33, i32 noundef %34) #7
   %35 = icmp eq i32 %34, 0
   br i1 %35, label %36, label %7
 
@@ -155,7 +156,7 @@ define dso_local void @draw_pythagoras_tree(i32 noundef %0, i32 noundef %1, i32 
   ret void
 }
 
-; Function Attrs: noreturn nounwind sspstrong uwtable
+; Function Attrs: noreturn nounwind optsize sspstrong uwtable
 define dso_local void @app() local_unnamed_addr #4 {
   br label %1
 
@@ -197,27 +198,30 @@ define dso_local void @app() local_unnamed_addr #4 {
 
 18:                                               ; preds = %14, %18
   %19 = phi i32 [ %20, %18 ], [ 0, %14 ]
-  tail call void @draw_pythagoras_tree(i32 noundef 256, i32 noundef 51, i32 noundef 298, i32 noundef 51, i32 noundef %19)
+  tail call void @draw_pythagoras_tree(i32 noundef 256, i32 noundef 51, i32 noundef 298, i32 noundef 51, i32 noundef %19) #7
   tail call void (...) @simFlush() #6
   %20 = add nuw nsw i32 %19, 1
   %21 = icmp eq i32 %20, %4
   br i1 %21, label %17, label %18, !llvm.loop !12
 }
 
+; Function Attrs: optsize
 declare i32 @simRand(...) local_unnamed_addr #3
 
+; Function Attrs: optsize
 declare void @simFlush(...) local_unnamed_addr #3
 
 ; Function Attrs: nocallback nofree nosync nounwind speculatable willreturn memory(none)
 declare i32 @llvm.abs.i32(i32, i1 immarg) #5
 
-attributes #0 = { mustprogress nofree norecurse nosync nounwind sspstrong willreturn memory(read, argmem: none, inaccessiblemem: none) uwtable "min-legal-vector-width"="0" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cmov,+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" }
-attributes #1 = { mustprogress nofree norecurse nosync nounwind sspstrong willreturn memory(none) uwtable "min-legal-vector-width"="0" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cmov,+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" }
-attributes #2 = { nounwind sspstrong uwtable "min-legal-vector-width"="0" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cmov,+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" }
-attributes #3 = { "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cmov,+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" }
-attributes #4 = { noreturn nounwind sspstrong uwtable "min-legal-vector-width"="0" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cmov,+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" }
+attributes #0 = { mustprogress nofree norecurse nosync nounwind optsize sspstrong willreturn memory(read, argmem: none, inaccessiblemem: none) uwtable "min-legal-vector-width"="0" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cmov,+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" }
+attributes #1 = { mustprogress nofree norecurse nosync nounwind optsize sspstrong willreturn memory(none) uwtable "min-legal-vector-width"="0" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cmov,+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" }
+attributes #2 = { nounwind optsize sspstrong uwtable "min-legal-vector-width"="0" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cmov,+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" }
+attributes #3 = { optsize "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cmov,+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" }
+attributes #4 = { noreturn nounwind optsize sspstrong uwtable "min-legal-vector-width"="0" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cmov,+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" }
 attributes #5 = { nocallback nofree nosync nounwind speculatable willreturn memory(none) }
-attributes #6 = { nounwind }
+attributes #6 = { nounwind optsize }
+attributes #7 = { optsize }
 
 !llvm.module.flags = !{!0, !1, !2, !3}
 !llvm.ident = !{!4}
