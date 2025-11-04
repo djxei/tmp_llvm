@@ -1,0 +1,60 @@
+=== LENGTH 1 PATTERNS ===
+[78133] load <- alloca
+[34749] sub <- load
+[16861] add <- load
+[12926] call <- load
+[12496] icmp <- load
+[10914] mul <- sub
+[10497] store <- alloca
+[7060] br <- icmp
+[5941] store <- add
+[5499] sdiv <- mul
+
+=== LENGTH 2 PATTERNS ===
+[35521] load <- alloca, load <- alloca
+[17748] load <- alloca, sub <- load
+[16917] sub <- load, sub <- load
+[8063] store <- alloca, load <- alloca
+[6556] icmp <- load, br <- icmp
+[6556] load <- alloca, icmp <- load
+[6224] br <- icmp, load <- alloca
+[5940] icmp <- load, icmp <- load
+[5689] add <- load, store <- add
+[5689] store <- add, store <- alloca
+
+=== LENGTH 3 PATTERNS ===
+[17001] load <- alloca, load <- alloca, sub <- load
+[16917] load <- alloca, sub <- load, sub <- load
+[6193] store <- alloca, load <- alloca, load <- alloca
+[5972] icmp <- load, br <- icmp, load <- alloca
+[5940] load <- alloca, icmp <- load, icmp <- load
+[5940] load <- alloca, load <- alloca, icmp <- load
+[5940] icmp <- load, icmp <- load, br <- icmp
+[5709] br <- icmp, load <- alloca, load <- alloca
+[5505] load <- alloca, add <- load, add <- load
+[5505] load <- alloca, load <- alloca, add <- load
+
+=== LENGTH 4 PATTERNS ===
+[16917] load <- alloca, load <- alloca, sub <- load, sub <- load
+[5940] load <- alloca, icmp <- load, icmp <- load, br <- icmp
+[5940] load <- alloca, load <- alloca, icmp <- load, icmp <- load
+[5688] store <- alloca, load <- alloca, load <- alloca, icmp <- load
+[5505] load <- alloca, load <- alloca, add <- load, add <- load
+[5499] load <- alloca, sub <- load, sub <- load, mul <- sub
+[5499] load <- alloca, sub <- load, sub <- load, load <- alloca
+[5457] icmp <- load, br <- icmp, load <- alloca, load <- alloca
+[5436] add <- load, store <- add, store <- alloca, load <- alloca
+[5431] icmp <- load, icmp <- load, br <- icmp, load <- alloca
+
+=== LENGTH 5 PATTERNS ===
+[5940] load <- alloca, load <- alloca, icmp <- load, icmp <- load, br <- icmp
+[5688] store <- alloca, load <- alloca, load <- alloca, icmp <- load, icmp <- load
+[5499] load <- alloca, load <- alloca, sub <- load, sub <- load, load <- alloca
+[5499] load <- alloca, load <- alloca, sub <- load, sub <- load, mul <- sub
+[5431] load <- alloca, icmp <- load, icmp <- load, br <- icmp, load <- alloca
+[5431] icmp <- load, icmp <- load, br <- icmp, load <- alloca, load <- alloca
+[5430] store <- add, store <- alloca, load <- alloca, load <- alloca, icmp <- load
+[5430] add <- load, store <- add, store <- alloca, load <- alloca, load <- alloca
+[5421] add <- load, add <- load, store <- add, store <- alloca, load <- alloca
+[5421] load <- alloca, load <- alloca, add <- load, add <- load, store <- add
+
