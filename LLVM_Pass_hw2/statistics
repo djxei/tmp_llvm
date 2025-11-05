@@ -1,60 +1,60 @@
 === LENGTH 1 PATTERNS ===
-[82708] call <- add
-[77434] mul <- sub
-[46429] br <- icmp
-[42862] call <- phi
-[41647] add <- select
-[41121] add <- phi
-[40475] sub <- phi
-[39303] add <- sdiv
-[39303] sdiv <- mul
-[38224] icmp <- add
+[92387] call <- add
+[85970] mul <- sub
+[52350] br <- icmp
+[48020] call <- phi
+[45898] add <- phi
+[45124] sub <- phi
+[43698] add <- sdiv
+[43698] sdiv <- mul
+[42367] icmp <- add
+[42272] add <- select
 
 === LENGTH 2 PATTERNS ===
-[39303] mul <- sub, sdiv <- mul
-[38131] call <- add, add <- phi
-[38131] add <- select, icmp <- add
-[38131] sdiv <- sub, add <- sdiv
-[38131] sdiv <- mul, sdiv <- sub
-[38131] call <- phi, call <- add
-[38131] mul <- sub, mul <- sub
-[38131] add <- phi, add <- select
-[34618] br <- icmp, sub <- phi
-[21604] call <- add, call <- add
+[43698] mul <- sub, sdiv <- mul
+[42272] call <- phi, call <- add
+[42272] call <- add, add <- phi
+[42272] sdiv <- mul, sdiv <- sub
+[42272] add <- phi, add <- select
+[42272] sdiv <- sub, add <- sdiv
+[42272] add <- select, icmp <- add
+[42272] mul <- sub, mul <- sub
+[38000] br <- icmp, sub <- phi
+[24226] call <- add, call <- add
 
 === LENGTH 3 PATTERNS ===
-[38131] sdiv <- mul, sdiv <- sub, add <- sdiv
-[38131] add <- phi, add <- select, icmp <- add
-[38131] mul <- sub, sdiv <- mul, sdiv <- sub
-[38131] mul <- sub, mul <- sub, sdiv <- mul
-[38131] call <- add, add <- phi, add <- select
-[19260] add <- sdiv, add <- sub, call <- phi
-[19260] call <- add, call <- add, add <- phi
-[19260] sdiv <- sub, add <- sdiv, add <- sub
-[19260] add <- sub, call <- phi, call <- add
-[19260] add <- select, icmp <- add, br <- icmp
+[42272] mul <- sub, sdiv <- mul, sdiv <- sub
+[42272] call <- add, add <- phi, add <- select
+[42272] sdiv <- mul, sdiv <- sub, add <- sdiv
+[42272] add <- phi, add <- select, icmp <- add
+[42272] mul <- sub, mul <- sub, sdiv <- mul
+[21374] call <- phi, call <- add, call <- add
+[21374] call <- add, call <- add, add <- phi
+[21374] sub <- phi, mul <- sub, mul <- sub
+[21374] add <- select, icmp <- add, br <- icmp
+[21374] add <- sdiv, add <- sub, call <- phi
 
 === LENGTH 4 PATTERNS ===
-[38131] mul <- sub, mul <- sub, sdiv <- mul, sdiv <- sub
-[38131] mul <- sub, sdiv <- mul, sdiv <- sub, add <- sdiv
-[38131] call <- add, add <- phi, add <- select, icmp <- add
-[19260] call <- add, call <- add, add <- phi, add <- select
-[19260] sdiv <- mul, sdiv <- sub, add <- sdiv, add <- sub
-[19260] add <- sub, call <- phi, call <- add, call <- add
-[19260] add <- phi, add <- select, icmp <- add, br <- icmp
-[19260] sdiv <- sub, add <- sdiv, add <- sub, call <- phi
-[19260] add <- sdiv, add <- sub, call <- phi, call <- add
-[19260] call <- phi, call <- add, call <- add, add <- phi
+[42272] mul <- sub, mul <- sub, sdiv <- mul, sdiv <- sub
+[42272] mul <- sub, sdiv <- mul, sdiv <- sub, add <- sdiv
+[42272] call <- add, add <- phi, add <- select, icmp <- add
+[21374] sdiv <- sub, add <- sdiv, add <- sub, call <- phi
+[21374] add <- sub, call <- phi, call <- add, call <- add
+[21374] call <- phi, call <- add, call <- add, add <- phi
+[21374] sdiv <- mul, sdiv <- sub, add <- sdiv, add <- sub
+[21374] add <- sdiv, add <- sub, call <- phi, call <- add
+[21374] sub <- phi, mul <- sub, mul <- sub, sdiv <- mul
+[21374] call <- add, call <- add, add <- phi, add <- select
 
 === LENGTH 5 PATTERNS ===
-[38131] mul <- sub, mul <- sub, sdiv <- mul, sdiv <- sub, add <- sdiv
-[19260] call <- add, call <- add, add <- phi, add <- select, icmp <- add
-[19260] add <- sub, call <- phi, call <- add, call <- add, add <- phi
-[19260] call <- add, add <- phi, add <- select, icmp <- add, br <- icmp
-[19260] mul <- sub, sdiv <- mul, sdiv <- sub, add <- sdiv, add <- sub
-[19260] call <- phi, call <- add, call <- add, add <- phi, add <- select
-[19260] sdiv <- mul, sdiv <- sub, add <- sdiv, add <- sub, call <- phi
-[19260] sdiv <- sub, add <- sdiv, add <- sub, call <- phi, call <- add
-[19260] add <- sdiv, add <- sub, call <- phi, call <- add, call <- add
-[19260] sub <- phi, mul <- sub, mul <- sub, sdiv <- mul, sdiv <- sub
+[42272] mul <- sub, mul <- sub, sdiv <- mul, sdiv <- sub, add <- sdiv
+[21374] add <- sub, call <- phi, call <- add, call <- add, add <- phi
+[21374] sub <- phi, mul <- sub, mul <- sub, sdiv <- mul, sdiv <- sub
+[21374] add <- sdiv, add <- sub, call <- phi, call <- add, call <- add
+[21374] sdiv <- sub, add <- sdiv, add <- sub, call <- phi, call <- add
+[21374] sdiv <- mul, sdiv <- sub, add <- sdiv, add <- sub, call <- phi
+[21374] mul <- sub, sdiv <- mul, sdiv <- sub, add <- sdiv, add <- sub
+[21374] call <- add, add <- phi, add <- select, icmp <- add, br <- icmp
+[21374] call <- add, call <- add, add <- phi, add <- select, icmp <- add
+[21374] call <- phi, call <- add, call <- add, add <- phi, add <- select
 
