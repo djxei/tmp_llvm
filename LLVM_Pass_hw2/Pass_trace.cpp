@@ -58,7 +58,7 @@ struct TrassOfUsesPass : public PassInfoMixin<TrassOfUsesPass> {
 
 PassPluginLibraryInfo getPassPluginInfo() {
   const auto callback = [](PassBuilder &PB) {
-    PB.registerPipelineStartEPCallback([=](ModulePassManager &MPM, auto) {
+    PB.registerOptimizerLastEPCallback([](ModulePassManager &MPM, auto, auto) {
       MPM.addPass(TrassOfUsesPass{});
       return true;
     });

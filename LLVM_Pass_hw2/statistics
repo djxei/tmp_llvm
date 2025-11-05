@@ -1,60 +1,60 @@
 === LENGTH 1 PATTERNS ===
-[78133] load <- alloca
-[34749] sub <- load
-[16861] add <- load
-[12926] call <- load
-[12496] icmp <- load
-[10914] mul <- sub
-[10497] store <- alloca
-[7060] br <- icmp
-[5941] store <- add
-[5499] sdiv <- mul
+[82708] call <- add
+[77434] mul <- sub
+[46429] br <- icmp
+[42862] call <- phi
+[41647] add <- select
+[41121] add <- phi
+[40475] sub <- phi
+[39303] add <- sdiv
+[39303] sdiv <- mul
+[38224] icmp <- add
 
 === LENGTH 2 PATTERNS ===
-[35521] load <- alloca, load <- alloca
-[17748] load <- alloca, sub <- load
-[16917] sub <- load, sub <- load
-[8063] store <- alloca, load <- alloca
-[6556] icmp <- load, br <- icmp
-[6556] load <- alloca, icmp <- load
-[6224] br <- icmp, load <- alloca
-[5940] icmp <- load, icmp <- load
-[5689] add <- load, store <- add
-[5689] store <- add, store <- alloca
+[39303] mul <- sub, sdiv <- mul
+[38131] call <- add, add <- phi
+[38131] add <- select, icmp <- add
+[38131] sdiv <- sub, add <- sdiv
+[38131] sdiv <- mul, sdiv <- sub
+[38131] call <- phi, call <- add
+[38131] mul <- sub, mul <- sub
+[38131] add <- phi, add <- select
+[34618] br <- icmp, sub <- phi
+[21604] call <- add, call <- add
 
 === LENGTH 3 PATTERNS ===
-[17001] load <- alloca, load <- alloca, sub <- load
-[16917] load <- alloca, sub <- load, sub <- load
-[6193] store <- alloca, load <- alloca, load <- alloca
-[5972] icmp <- load, br <- icmp, load <- alloca
-[5940] load <- alloca, icmp <- load, icmp <- load
-[5940] load <- alloca, load <- alloca, icmp <- load
-[5940] icmp <- load, icmp <- load, br <- icmp
-[5709] br <- icmp, load <- alloca, load <- alloca
-[5505] load <- alloca, add <- load, add <- load
-[5505] load <- alloca, load <- alloca, add <- load
+[38131] sdiv <- mul, sdiv <- sub, add <- sdiv
+[38131] add <- phi, add <- select, icmp <- add
+[38131] mul <- sub, sdiv <- mul, sdiv <- sub
+[38131] mul <- sub, mul <- sub, sdiv <- mul
+[38131] call <- add, add <- phi, add <- select
+[19260] add <- sdiv, add <- sub, call <- phi
+[19260] call <- add, call <- add, add <- phi
+[19260] sdiv <- sub, add <- sdiv, add <- sub
+[19260] add <- sub, call <- phi, call <- add
+[19260] add <- select, icmp <- add, br <- icmp
 
 === LENGTH 4 PATTERNS ===
-[16917] load <- alloca, load <- alloca, sub <- load, sub <- load
-[5940] load <- alloca, icmp <- load, icmp <- load, br <- icmp
-[5940] load <- alloca, load <- alloca, icmp <- load, icmp <- load
-[5688] store <- alloca, load <- alloca, load <- alloca, icmp <- load
-[5505] load <- alloca, load <- alloca, add <- load, add <- load
-[5499] load <- alloca, sub <- load, sub <- load, mul <- sub
-[5499] load <- alloca, sub <- load, sub <- load, load <- alloca
-[5457] icmp <- load, br <- icmp, load <- alloca, load <- alloca
-[5436] add <- load, store <- add, store <- alloca, load <- alloca
-[5431] icmp <- load, icmp <- load, br <- icmp, load <- alloca
+[38131] mul <- sub, mul <- sub, sdiv <- mul, sdiv <- sub
+[38131] mul <- sub, sdiv <- mul, sdiv <- sub, add <- sdiv
+[38131] call <- add, add <- phi, add <- select, icmp <- add
+[19260] call <- add, call <- add, add <- phi, add <- select
+[19260] sdiv <- mul, sdiv <- sub, add <- sdiv, add <- sub
+[19260] add <- sub, call <- phi, call <- add, call <- add
+[19260] add <- phi, add <- select, icmp <- add, br <- icmp
+[19260] sdiv <- sub, add <- sdiv, add <- sub, call <- phi
+[19260] add <- sdiv, add <- sub, call <- phi, call <- add
+[19260] call <- phi, call <- add, call <- add, add <- phi
 
 === LENGTH 5 PATTERNS ===
-[5940] load <- alloca, load <- alloca, icmp <- load, icmp <- load, br <- icmp
-[5688] store <- alloca, load <- alloca, load <- alloca, icmp <- load, icmp <- load
-[5499] load <- alloca, load <- alloca, sub <- load, sub <- load, load <- alloca
-[5499] load <- alloca, load <- alloca, sub <- load, sub <- load, mul <- sub
-[5431] load <- alloca, icmp <- load, icmp <- load, br <- icmp, load <- alloca
-[5431] icmp <- load, icmp <- load, br <- icmp, load <- alloca, load <- alloca
-[5430] store <- add, store <- alloca, load <- alloca, load <- alloca, icmp <- load
-[5430] add <- load, store <- add, store <- alloca, load <- alloca, load <- alloca
-[5421] add <- load, add <- load, store <- add, store <- alloca, load <- alloca
-[5421] load <- alloca, load <- alloca, add <- load, add <- load, store <- add
+[38131] mul <- sub, mul <- sub, sdiv <- mul, sdiv <- sub, add <- sdiv
+[19260] call <- add, call <- add, add <- phi, add <- select, icmp <- add
+[19260] add <- sub, call <- phi, call <- add, call <- add, add <- phi
+[19260] call <- add, add <- phi, add <- select, icmp <- add, br <- icmp
+[19260] mul <- sub, sdiv <- mul, sdiv <- sub, add <- sdiv, add <- sub
+[19260] call <- phi, call <- add, call <- add, add <- phi, add <- select
+[19260] sdiv <- mul, sdiv <- sub, add <- sdiv, add <- sub, call <- phi
+[19260] sdiv <- sub, add <- sdiv, add <- sub, call <- phi, call <- add
+[19260] add <- sdiv, add <- sub, call <- phi, call <- add, call <- add
+[19260] sub <- phi, mul <- sub, mul <- sub, sdiv <- mul, sdiv <- sub
 
