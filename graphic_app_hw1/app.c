@@ -1,19 +1,9 @@
 #include "sim.h"
 
 #define TREE_DEPTH 14
+#define MAIN_COLOUR 0xFFFF0000
 
-int colour;
 int grad;
-
-int main_colour() {
-    if (colour % 3 == 0) {
-        return 0xFF0000FF;
-    }
-    if (colour % 3 == 1) {
-        return 0xFF00FF00;
-    }
-    return 0xFFFF0000;
-}
 
 int get_abs(int x) {
     if (x < 0) {
@@ -25,7 +15,7 @@ int get_abs(int x) {
 void draw_line(int x, int y, int a, int b) {
     y = SIM_Y_SIZE - 1 - y;
     b = SIM_Y_SIZE - 1 - b;
-    int actual_colour = main_colour() + --grad;
+    int actual_colour = MAIN_COLOUR + --grad;
     int go = 1;
     if (get_abs(x - a) < get_abs(y - b)) {
         if (y > b) {
@@ -91,9 +81,8 @@ void app() {
         if (steps == TREE_DEPTH || steps == 0) {
             go *= -1;
             if (steps == 0) {
-                colour = simRand();
+                grad = simRand();
             }
-            grad = colour;
         }
         for (int i = 0; i < steps; ++i)  {
             draw_pythagoras_tree(x_l, y, x_r, y, i);  
