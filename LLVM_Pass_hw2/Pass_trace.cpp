@@ -7,17 +7,12 @@ using namespace llvm;
 
 struct TrassOfUsesPass : public PassInfoMixin<TrassOfUsesPass> {
 
-  bool isFuncLogger(StringRef name) {
-    return name == "traceLogger";
-  }
-
   PreservedAnalyses run(Module &M, ModuleAnalysisManager &AM) {
     for (auto &F : M) {
 
-      if (isFuncLogger(F.getName()) || F.isDeclaration()) {
+      if (F.isDeclaration()) {
         continue;
       }
-      
 
       // Prepare builder for IR modification
       LLVMContext &Ctx = F.getContext();
@@ -37,8 +32,16 @@ struct TrassOfUsesPass : public PassInfoMixin<TrassOfUsesPass> {
           if (isa<PHINode>(&I)) {
             continue;
           }
+          bool isUserCall = isa<CallInst>(&I);
           builder.SetInsertPoint(&I);
-          Value *user = builder.CreateGlobalString(I.getOpcodeName());
+          std::string desc = I.getOpcodeName();
+           if(CallInst *call = dyn_cast<CallInst>(&I)) {
+             if (call->getCalledFunction()->hasName()) {
+               desc += " " +
+               static_cast<std::string>(call->getCalledFunction()->getName());
+             }
+           }
+          Value *user = builder.CreateGlobalString(desc);
           for (auto &U : I.operands()) {
             if (auto* op = dyn_cast<Instruction>(U)) {
               Value *operand = builder.CreateGlobalString(op->getOpcodeName());
