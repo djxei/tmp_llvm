@@ -12,11 +12,6 @@ declare void @simFlush()
 ; Function Attrs: nocallback nofree nosync nounwind speculatable willreturn memory(none)
 declare i32 @llvm.abs.i32(i32, i1 immarg) #0
 
-define i32 @get_abs(i32 %0) {
-  %2 = tail call i32 @llvm.abs.i32(i32 %0, i1 true)
-  ret i32 %2
-}
-
 define void @draw_line(i32 %0, i32 %1, i32 %2, i32 %3) {
   %5 = sub nsw i32 255, %1
   %6 = sub nsw i32 255, %3
@@ -77,18 +72,6 @@ define void @draw_line(i32 %0, i32 %1, i32 %2, i32 %3) {
 
 45:                                               ; preds = %37, %30, %22, %15
   ret void
-}
-
-define i32 @turn_x(i32 %0, i32 %1, i32 %2, i32 %3) {
-  %5 = add i32 %1, %0
-  %6 = sub i32 %5, %3
-  ret i32 %6
-}
-
-define i32 @turn_y(i32 %0, i32 %1, i32 %2, i32 %3) {
-  %5 = sub i32 %1, %0
-  %6 = add i32 %5, %2
-  ret i32 %6
 }
 
 define void @draw_pythagoras_tree(i32 %0, i32 %1, i32 %2, i32 %3, i32 %4) {

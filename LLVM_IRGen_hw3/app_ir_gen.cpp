@@ -77,17 +77,17 @@ int main() {
   Function *absFunc = Intrinsic::getOrInsertDeclaration(module, Intrinsic::abs, {int32Ty});
 
   // define dso_local range(i32 0, -2147483648) i32 @get_abs(i32 noundef %0) local_unnamed_addr #0 {
-  FunctionType *get_absType = FunctionType::get(int32Ty, arrParamTypes1, false);
-  Function *get_absFunc = 
-      Function::Create(get_absType, Function::ExternalLinkage, "get_abs", module);
-  {
-  setEntry(get_absFunc);
-  //   %2 = tail call i32 @llvm.abs.i32(i32 %0, i1 true)
-  CallInst *val2 = builder.CreateCall(absFunc, {get_absFunc->getArg(0), builder.getTrue()});
-  val2->setTailCall();
-  //   ret i32 %2
-  builder.CreateRet(val2); 
-  }
+  // FunctionType *get_absType = FunctionType::get(int32Ty, arrParamTypes1, false);
+  // Function *get_absFunc = 
+  //     Function::Create(get_absType, Function::ExternalLinkage, "get_abs", module);
+  // {
+  // setEntry(get_absFunc);
+  // //   %2 = tail call i32 @llvm.abs.i32(i32 %0, i1 true)
+  // CallInst *val2 = builder.CreateCall(absFunc, {get_absFunc->getArg(0), builder.getTrue()});
+  // val2->setTailCall();
+  // //   ret i32 %2
+  // builder.CreateRet(val2); 
+  // }
 
   // define dso_local void @draw_line(i32 noundef %0, i32 noundef %1, i32 noundef %2, i32 noundef %3) local_unnamed_addr #1 {
   FunctionType *draw_lineType = FunctionType::get(voidType, arrParamTypes4, false);
@@ -229,39 +229,39 @@ int main() {
 
   // ; Function Attrs: mustprogress nofree norecurse nosync nounwind sspstrong willreturn memory(none) uwtable
   // define dso_local noundef i32 @turn_x(i32 noundef %0, i32 noundef %1, i32 noundef %2, i32 noundef %3) local_unnamed_addr #0 
-  FunctionType *turn_xType = FunctionType::get(int32Ty, arrParamTypes4, false);
-  Function *turn_xFunc = Function::Create(turn_xType, Function::ExternalLinkage, "turn_x", module);
-  {
-  setEntry(turn_xFunc);
-  Value *val0 = turn_xFunc->getArg(0);
-  Value *val1 = turn_xFunc->getArg(1);
-  Value *val2 = turn_xFunc->getArg(2);
-  Value *val3 = turn_xFunc->getArg(3);
-  //   %5 = add i32 %1, %0
-  Value *val5 = builder.CreateAdd(val1, val0);
-  //   %6 = sub i32 %5, %3
-  Value *val6 = builder.CreateSub(val5, val3);
-  //   ret i32 %6
-  builder.CreateRet(val6);
-  }
+  // FunctionType *turn_xType = FunctionType::get(int32Ty, arrParamTypes4, false);
+  // Function *turn_xFunc = Function::Create(turn_xType, Function::ExternalLinkage, "turn_x", module);
+  // {
+  // setEntry(turn_xFunc);
+  // Value *val0 = turn_xFunc->getArg(0);
+  // Value *val1 = turn_xFunc->getArg(1);
+  // Value *val2 = turn_xFunc->getArg(2);
+  // Value *val3 = turn_xFunc->getArg(3);
+  // //   %5 = add i32 %1, %0
+  // Value *val5 = builder.CreateAdd(val1, val0);
+  // //   %6 = sub i32 %5, %3
+  // Value *val6 = builder.CreateSub(val5, val3);
+  // //   ret i32 %6
+  // builder.CreateRet(val6);
+  // }
 
   // ; Function Attrs: mustprogress nofree norecurse nosync nounwind sspstrong willreturn memory(none) uwtable
   // define dso_local noundef i32 @turn_y(i32 noundef %0, i32 noundef %1, i32 noundef %2, i32 noundef %3) local_unnamed_addr #0 {
-  FunctionType *turn_yType = FunctionType::get(int32Ty, arrParamTypes4, false);
-  Function *turn_yFunc = Function::Create(turn_yType, Function::ExternalLinkage, "turn_y", module);
-  {
-  setEntry(turn_yFunc);
-  Value *val0 = turn_yFunc->getArg(0);
-  Value *val1 = turn_yFunc->getArg(1);
-  Value *val2 = turn_yFunc->getArg(2);
-  Value *val3 = turn_yFunc->getArg(3);
-  //   %5 = add i32 %1, %0
-  Value *val5 = builder.CreateSub(val1, val0);
-  //   %6 = sub i32 %5, %2
-  Value *val6 = builder.CreateAdd(val5, val2);
-  //   ret i32 %6
-  builder.CreateRet(val6);
-  }
+  // FunctionType *turn_yType = FunctionType::get(int32Ty, arrParamTypes4, false);
+  // Function *turn_yFunc = Function::Create(turn_yType, Function::ExternalLinkage, "turn_y", module);
+  // {
+  // setEntry(turn_yFunc);
+  // Value *val0 = turn_yFunc->getArg(0);
+  // Value *val1 = turn_yFunc->getArg(1);
+  // Value *val2 = turn_yFunc->getArg(2);
+  // Value *val3 = turn_yFunc->getArg(3);
+  // //   %5 = add i32 %1, %0
+  // Value *val5 = builder.CreateSub(val1, val0);
+  // //   %6 = sub i32 %5, %2
+  // Value *val6 = builder.CreateAdd(val5, val2);
+  // //   ret i32 %6
+  // builder.CreateRet(val6);
+  // }
 
   // ; Function Attrs: nounwind sspstrong uwtable
   // define dso_local void @draw_pythagoras_tree(i32 noundef %0, i32 noundef %1, i32 noundef %2, i32 noundef %3, i32 noundef %4) local_unnamed_addr #1 {
