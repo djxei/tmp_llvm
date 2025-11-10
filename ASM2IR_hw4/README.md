@@ -1,7 +1,7 @@
 ## Simple Simulator implementation:
 The ISA description is placed in the `include/ISA.h`.
 
-Application needs 2 argument: file with assembler or binary code and execution mod (1-3):
+Application needs 2 argument: file with assembler and execution mod (1-3):
 1. Simulation
 2. IR with emulate funcs
 3. Full IR generation
