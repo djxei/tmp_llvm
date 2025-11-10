@@ -1,0 +1,201 @@
+  app_entry
+    XOR x0 x0 x0
+    XOR x1 x1 x1
+    MOVi x2 1
+    BR label_1
+  label_0
+    BR label_1
+  label_1
+    ADD x1 x2 x1
+    BR_EQi x1 14 label_3 label_2
+  label_2
+    BR_EQi x1 0 label_3 label_5
+  label_3
+    iSUB x2 x2 0
+    BR_EQi x1 0 label_4 label_5
+  label_4
+    RAND x0
+    BR label_5
+  label_5
+    XOR x3 x3 x3
+    ICMPi_SGT x4 x1 0
+    BR_COND x4 label_6 label_0
+  label_6
+    MOVi x7 256
+    MOVi x8 51
+    MOVi x9 298
+    MOVi x10 51
+    MOV x11 x3
+    XOR x30 x30 x30
+    PUSH x30
+    BR dpt
+  call_label_0
+    FLUSH
+    ADDi x3 x3 1
+    BR_EQ x3 x1 label_0 label_6
+
+
+  dpt
+    BR_EQi x11 0 dpt_ret label_9
+  label_9
+    TURN x12 x7 x8 x10
+    TURN x13 x8 x9 x7 
+    TURN x14 x12 x13 x8
+    TURN x15 x13 x7 x12
+
+    MOV x20 x7
+    MOV x21 x8
+    MOV x22 x9
+    MOV x23 x10
+    
+    MOVi x30 1
+    PUSH x30
+    BR draw_line
+  call_label_1
+    MOV x20 x7
+    MOV x21 x8
+    MOV x22 x12
+    MOV x23 x13
+
+    MOVi x30 2
+    PUSH x30
+    BR draw_line
+  call_label_2
+    MOV x20 x14
+    MOV x21 x15
+    MOV x22 x9
+    MOV x23 x10
+
+    MOVi x30 3
+    PUSH x30
+    BR draw_line
+  call_label_3
+    MOV x20 x12
+    MOV x21 x13
+    MOV x22 x14
+    MOV x23 x15
+
+    MOVi x30 4
+    PUSH x30
+    BR draw_line
+  call_label_4
+
+    MOVi x9 4
+    MOVi x10 7
+
+    MULi x7 x14 3
+    SUB x16 x15 x13
+    SDIV_MUL x16 x10 x16 x9
+    TURN x7 x12 x7 x16
+    DIVi x7 x7 4
+    
+    MULi x8 x15 3
+    SUB x16 x12 x14
+    SDIV_MUL x16 x10 x16 x9
+    TURN x8 x13 x8 x16
+    DIVi x8 x8 4
+
+    MOV x20 x12
+    MOV x21 x13
+    MOV x22 x7
+    MOV x23 x8
+
+    MOVi x30 5
+    PUSH x30
+    BR draw_line
+  call_label_5
+    MOV x20 x14
+    MOV x21 x15
+    MOV x22 x7
+    MOV x23 x8
+
+    MOVi x30 6
+    PUSH x30
+    BR draw_line
+  call_label_6
+  
+    ADDi x11 x11 -1
+    PUSH x12
+    PUSH x13
+    PUSH x7
+    PUSH x8
+    PUSH x11
+    MOV x9 x14
+    MOV x10 x15
+
+    MOVi x30 7
+    PUSH x30
+    BR dpt
+  call_label_7
+    POP x11
+    POP x10
+    POP x9
+    POP x8
+    POP x7
+    BR dpt
+
+  dpt_ret
+    POP x30
+    BR_EQi x30 0 call_label_0 call_label_7
+
+
+
+  draw_line
+    iSUB x21 x21 255
+    iSUB x23 x23 255
+    ADDi x26 x0 -65537
+    ADDi x0 x0 -1
+
+    SUB x27 x20 x22
+    TO_ABS x27
+
+    SUB x28 x21 x23
+    TO_ABS x28
+    
+    ICMP_ULT x27 x27 x28
+    BR_COND x27 loop_intro_1 loop_intro_2
+  loop_intro_1
+    ICMP_SGT x24 x21 x23
+    SELECT x24 -1 1
+    BR_EQ x23 x21 draw_line_ret loop_int1_nxt
+  loop_int1_nxt
+    SUB x25 x22 x20
+    SUB x27 x23 x21
+    MOV x28 x21
+    BR loop_draw_1
+  loop_draw_1
+    SUB x29 x28 x21
+    SDIV_MUL x29 x29 x25 x27
+    ADD x29 x29 x20
+    PUT_PIXEL x29 x28 x26
+    ADD x28 x28 x24
+    BR_EQ x28 x23 draw_line_ret loop_draw_1
+  
+  loop_intro_2
+    ICMP_SGT x24 x20 x22
+    SELECT x24 -1 1
+    BR_EQ x22 x20 draw_line_ret loop_int2_nxt
+  loop_int2_nxt
+    SUB x25 x23 x21
+    SUB x27 x22 x20
+    MOV x28 x20
+    BR loop_draw_2
+  loop_draw_2
+    SUB x29 x28 x20
+    SDIV_MUL x29 x29 x25 x27
+    ADD x29 x29 x21
+    PUT_PIXEL x28 x29 x26
+    ADD x28 x28 x24
+    BR_EQ x28 x22 draw_line_ret loop_draw_2
+
+  draw_line_ret
+    POP x30
+    BR_EQi x30 1 call_label_1 draw_line_ret_1
+  draw_line_ret_1
+    BR_EQi x30 2 call_label_2 draw_line_ret_2
+  draw_line_ret_2
+    BR_EQi x30 3 call_label_3 draw_line_ret_3
+  draw_line_ret_3
+    BR_EQi x30 4 call_label_4 draw_line_ret_4
+  draw_line_ret_4
+    BR_EQi x30 5 call_label_5 call_label_6
